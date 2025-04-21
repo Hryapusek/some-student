@@ -2,7 +2,11 @@
 #include <math.h>
 #include <stdlib.h>
 
-typedef struct { float x, y; } Point;
+typedef struct Point {
+  float x, y;
+  
+  void (*foo)();
+} Point;
 
 float distance(Point p1, Point p2) {
     return sqrtf((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
@@ -33,10 +37,12 @@ float dotProduct(Point p1, Point p2) {
     return p1.x * p2.x + p1.y * p2.y;
 }
 
-
 int main() {
+    
     Point p1 = {3.0, 4.0};
     Point p2 = {6.0, 8.0};
+
+    Point p3 = p1;
     
     printf("Distance: %.2f\n", distance(p1, p2));
     
@@ -59,7 +65,7 @@ int main() {
         printf("(%f, %f) ", points[i].x, points[i].y);
     }
     printf("\n");
-    
+
     int numPoints = 5;
     Point *dynamicPoints = (Point *)malloc(numPoints * sizeof(Point));
     if (dynamicPoints == NULL) {

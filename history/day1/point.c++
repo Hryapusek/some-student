@@ -69,7 +69,6 @@ int main() {
         std::cout << p << " ";
     }
     std::cout << "\n";
-
     // Dynamic array → std::vector (resizable)
     std::vector<Point> dynamicPoints;
     dynamicPoints.reserve(5);  // Optional: pre-allocate
