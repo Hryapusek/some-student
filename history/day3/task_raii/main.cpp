@@ -1,0 +1,1 @@
+// Написать простое RAII для FileHandler
