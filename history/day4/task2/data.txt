@@ -1,0 +1,5 @@
+temperature:25.5
+humidity:80
+pressure:1013.2
+invalid_entry:abc
+negative_value:-10

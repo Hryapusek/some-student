@@ -1,0 +1,4 @@
+- Task with File RAII
+- Reading from file
+- Showing new/delete
+- Implementing simple vector
