@@ -1,16 +1,16 @@
 {
-        "programms": [
-            {
-                "program": "/usr/bin/ls",
-                "level": 0
-            },
-            {
-                "program": "/usr/bin/python3",
-                "level": 0
-            },
-            {
-                "program": "/usr/bin/dmesg",
-                "level": 1
-            }
+    "programms": [
+        {
+            "program": "/usr/bin/ls",
+            "level": 0
+        },
+        {
+            "program": "/usr/bin/python3",
+            "level": 0
+        },
+        {
+            "program": "/usr/bin/dmesg",
+            "level": 1
+        }
     ]
 }

@@ -1,8 +1,5 @@
-import os
 from conan import ConanFile
 from conan.tools.cmake import CMake, CMakeToolchain, cmake_layout, CMakeDeps
-from conan.tools.build import check_min_cppstd
-from conan.tools.files import copy, rmdir
 
 
 class ExampleRecipe(ConanFile):
@@ -14,3 +11,8 @@ class ExampleRecipe(ConanFile):
 
     def layout(self):
         cmake_layout(self)
+
+    def build(self):
+        cmake = CMake(self)
+        cmake.configure()
+        cmake.build()
