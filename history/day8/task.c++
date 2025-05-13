@@ -98,7 +98,7 @@ Iterator _find_if (Iterator it_first, Iterator it_second, Pred pred)
     {
       return it_first;
     }
-      it_first++;
+    it_first++;
   }
   return it_second;
 }

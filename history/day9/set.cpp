@@ -10,10 +10,6 @@ private:
         int id;
         std::string name;
         double gpa;
-        
-        // Task 1.1: Implement ordering by ID
-        bool operator<(const Student& other) const {
-        }
     };
 
 public:
