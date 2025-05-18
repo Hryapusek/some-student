@@ -61,6 +61,8 @@ int main (int argc, char** argv)
 
   std::function<bool(int)> predic = [](int x_in) -> bool { return ((x_in % 2) != 0); };
   std::vector<int>::iterator it_out1 = _find_if(it_first, it_second, predic);
+  // bad find if
+  // _find_if(it_first, it_second, []() { return true; });
   if (it_out1 != it_second)
   {
     std::cout << "Found data \""  << *it_out1 << "\" at element # " << std::distance(it_first, it_out1);
