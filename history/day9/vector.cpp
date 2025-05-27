@@ -60,9 +60,9 @@ class BookManager
     // }
     // return false;
     auto is_even = [&title](Book const& x) { return (x.title == title); };
-    auto found = std::find_if(this->m_books.cbegin(), this->m_books.cend(), is_even);
-    if(found != this->m_books.end()) {
-      this->m_books.erase(found);
+    auto found_it = std::find_if(this->m_books.cbegin(), this->m_books.cend(), is_even);
+    if(found_it != this->m_books.end()) {
+      this->m_books.erase(found_it);
       return true;
     }
     return false;
@@ -71,8 +71,7 @@ class BookManager
   // ===== 3. ITERATION & SEARCH =====
   void PrintAllBooks() const
   {
-    // const std::vector<Book>::iterator it = this->m_books.begin(); // нельзя двигать итератор (int
-    // * const a = malloc...)
+    // const std::vector<Book>::iterator it = this->m_books.begin(); // нельзя двигать итератор (int * const a = malloc...)
     std::vector<Book>::const_iterator it = this->m_books.cbegin();  // (const int *  a = malloc...)
 
     // while (it != this->m_books.end())
@@ -122,7 +121,7 @@ class BookManager
     this->m_books.reserve(num_books);
     std::copy(other.m_books.begin(), other.m_books.end(), std::back_inserter(this->m_books));
 
-    // ------------
+    // ------------ Most effective ------------ (std::move_iterator?)
     this->m_books.insert(this->m_books.end(), other.m_books.begin(), other.m_books.end());
 
     // ------------ Bad? ------------

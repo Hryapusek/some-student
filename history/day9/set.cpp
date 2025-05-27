@@ -1,4 +1,5 @@
 #include <iostream>
+#include <numeric>
 #include <optional>
 #include <string>
 #include <set>
@@ -31,7 +32,7 @@ class StudentManager
   bool addStudent(int id, std::string const& name, double gpa)
   {
     Student s {id, name, gpa};
-    return this->m_students.insert(s).second;  // std::move?
+    return this->m_students.insert(std::move(s)).second;  // std::move?
   }
 
   // Task 3: Remove student by ID
@@ -60,9 +61,10 @@ class StudentManager
     Student s {.id = id};  // C++17
     std::set<Student>::iterator it = this->m_students.find(s);
     if(it != this->m_students.end()) {
-      return std::pair<Student, bool> {*it, true};
+      return std::make_pair(*it, true);
     }
-    return std::pair<Student, bool> {{}, false};
+    return std::make_pair(Student{}, false);
+    // return std::pair<Student, bool> {{}, false};
   }
 
   std::optional<Student> findStudentAnother1(int id) const
@@ -85,13 +87,25 @@ class StudentManager
   }
 
   // Task 6: Get students with GPA >= threshold
-  void printHighAchievers(double min_gpa) const {}
+  void printHighAchievers(double min_gpa) const {
+    for (const Student &s : this->m_students)
+    {
+      if (s.gpa > min_gpa)
+      {
+        std::cout << "Student name: " << s.name << "\n";
+      }
+    }
+    std::cout.flush();
+  }
 
   // Task 7: Merge two student managers
-  void merge(StudentManager const& other) {}
+  void merge(StudentManager const& other) {
+    this->m_students.insert(other.m_students.begin(), other.m_students.end());
+  }
 
   // Task 8: Get class average GPA
-  double getAverageGPA() const {}
+  double getAverageGPA() const {
+  }
 };
 
 int main()
